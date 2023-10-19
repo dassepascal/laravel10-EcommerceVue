@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\Order;
-use App\Models\User;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
 {

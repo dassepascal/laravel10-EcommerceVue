@@ -50,5 +50,8 @@ product :  public function orders()
 System d'auth
 composer require laravel/breeze
 
+page produit
+
+
 
 
