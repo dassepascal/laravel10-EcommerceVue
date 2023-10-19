@@ -52,6 +52,9 @@ composer require laravel/breeze
 
 page produit
 
+install vue
+npm install vue@next vue-loader
 
-
-
+librairies laravel/shopping card
+https://github.com/darryldecode/laravelshoppingcart
+composer require "darryldecode/cart"
