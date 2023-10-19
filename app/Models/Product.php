@@ -23,11 +23,10 @@ class Product extends Model
     //         get: fn($value)=> str_replace('.', ',', $value/100) . ' €',
     //     );
     // }
-      public function price(): Attribute
+
+
+    public function getFormatedPriceAttribut()
     {
-        $attribute = new Attribute();
-        return $attribute->make(
-            get: fn($value)=> str_replace('.', ',', $value/100) . ' €',
-        );
+        return str_replace('.', ',', $this->price/100) . ' €';
     }
 }
