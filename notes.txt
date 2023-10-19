@@ -23,6 +23,7 @@ composer require pestphp/pest --dev --with-all-dependencies
 
 ./vendor/bin/pest
 
+site : https://www.youtube.com/watch?v=qmpbinq8XaY&t=101s
 
 creation des models
 
@@ -32,4 +33,21 @@ php artisan make:model Order -mfc
 
 table pivot
 php artisan make:migration create_order_product_table // respecte lordre alphabetique
+
+DatabaseSeeder copie de git à 9 mn
+creation des relations pour que cela fonctionne
+user :  public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+product :  public function orders()
+    {
+        return $this->belongsToMany(Order::class);
+        ->withPivot('total_quantity', 'total_price');// parce que ajour de ces 2 colonnes
+    }
+
+
+
+
 
