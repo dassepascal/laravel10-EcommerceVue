@@ -1,0 +1,26 @@
+package
+1 Laravel ProfileGeneratorController
+
+
+
+raccourci pour ./vendor/bin/pint dans composer.json
+
+ "pint": [
+            "@php ./vendor/bin/pint"
+        ]
+
+
+ Larastan
+ https://github.com/nunomaduro/larastan
+
+
+creation du fichier
+phpstan.neon
+
+package  pest
+
+composer require pestphp/pest --dev --with-all-dependencies
+
+./vendor/bin/pest
+
+
