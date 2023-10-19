@@ -24,3 +24,12 @@ composer require pestphp/pest --dev --with-all-dependencies
 ./vendor/bin/pest
 
 
+creation des models
+
+Product
+php artisan make:model Product -mfc
+php artisan make:model Order -mfc
+
+table pivot
+php artisan make:migration create_order_product_table // respecte lordre alphabetique
+
