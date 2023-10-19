@@ -58,3 +58,17 @@ npm install vue@next vue-loader
 librairies laravel/shopping card
 https://github.com/darryldecode/laravelshoppingcart
 composer require "darryldecode/cart"
+
+
+creation du component addtocart
+
+pb si on veut se deconnecter cela ne fonctionne plus
+pourquoi? parce que vue a pris le dessus est dans views/components/dropdown.blade
+   <div @click="open = ! open">
+        {{ $trigger }}
+    </div>
+    correction :
+ <div x-on:click="open = ! open">
+        {{ $trigger }}
+    </div>
+
