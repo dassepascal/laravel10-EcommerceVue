@@ -72,3 +72,9 @@ pourquoi? parce que vue a pris le dessus est dans views/components/dropdown.blad
         {{ $trigger }}
     </div>
 
+
+    php artisan make:controller Api\CartController --api
+
+    Route on peut faire si on est connecté
+    
+
