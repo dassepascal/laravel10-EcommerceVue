@@ -39,10 +39,10 @@
                                 </div>
                                 <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{
                                     $product->description }}</p>
-                                <div class='flex items-center justify-between py-4'>
+                                {{-- <div class='flex items-center justify-between py-4'>
                                     <button class="bg-indigo-500 text-white p-2">Ajouter au panier</button>
 
-                                </div>
+                                </div> --}}
                                 {{-- <div class="flex mt-4">
                                     <div>
                                         <p tabindex="0"
