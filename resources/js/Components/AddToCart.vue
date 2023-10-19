@@ -10,9 +10,21 @@
 </template>
 
 <script setup>
+import axios from 'axios';
+
 const productId = defineProps(['productId']);
 
-const addToCart = () => {
-    console.log(productId)
+const addToCart = async()  => {
+   await axios.get('/sanctum/csrf-cookie');
+   await axios.get('/api/user')
+   .then(async(res) => {
+       console.log(res);
+   })
+   .catch((err) => {
+       console.log(err);
+   })
+   
+
+
 }
 </script>
