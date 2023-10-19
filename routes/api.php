@@ -20,6 +20,6 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
 
-    Route::apiRessource('products', CartController::class);
+    Route::apiResource('products', CartController::class);
 });
 

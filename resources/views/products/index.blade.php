@@ -39,6 +39,7 @@
                                 </div>
                                 <p tabindex="0" class="focus:outline-none text-xs text-gray-600 mt-2">{{
                                     $product->description }}</p>
+                                    <add-to-cart :product-id="{{ $product->id }}"></add-to-cart>
                                 {{-- <div class='flex items-center justify-between py-4'>
                                     <button class="bg-indigo-500 text-white p-2">Ajouter au panier</button>
 
@@ -55,7 +56,7 @@
                                             Complete box</p>
                                     </div>
                                 </div> --}}
-                                <add-to-cart :product-id="{{ $product->id }}"></add-to-cart>
+                              
                             </div>
                         </div>
                     </div>

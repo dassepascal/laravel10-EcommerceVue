@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class CartController extends Controller
 {
@@ -20,7 +21,9 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Product::where('id', $request->productId())->firstOrFail();
+
+        return $product->get;
     }
 
     /**

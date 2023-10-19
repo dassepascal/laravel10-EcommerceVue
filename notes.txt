@@ -76,5 +76,18 @@ pourquoi? parce que vue a pris le dessus est dans views/components/dropdown.blad
     php artisan make:controller Api\CartController --api
 
     Route on peut faire si on est connecté
-    
+
+
+ php artisan route:list --name='products'
+
+authentification laravel sanctum
+
+'api' => [
+    \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class, //ligne a decommenter dans Kernel
+    \Illuminate\Routing\Middleware\ThrottleRequests::class.':api',
+    \Illuminate\Routing\Middleware\SubstituteBindings::class,
+],
+
+
+
 
