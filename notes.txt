@@ -47,7 +47,8 @@ product :  public function orders()
         ->withPivot('total_quantity', 'total_price');// parce que ajour de ces 2 colonnes
     }
 
-
+System d'auth
+composer require laravel/breeze
 
 
 

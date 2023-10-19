@@ -1,21 +1,7 @@
 <?php
 
-namespace Tests\Feature;
+it('returns a successful response', function () {
+    $response = $this->get('/');
 
-use Tests\TestCase;
-class ExampleTest extends TestCase
-{
-    /**
-     * A basic test example.
-     */
-    public function test_a_basic_request(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-
-    }
-}
-
-
-
+    $response->assertStatus(200);
+});
