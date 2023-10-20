@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-
-use App\Models\Product;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Repositories\CartRepository;
+use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
@@ -25,9 +24,10 @@ class CartController extends Controller
     {
         $product = Product::where('id', $request->productId())->firstOrFail();
         $count = (new CartRepository())->add($product);
+
         return response()->json([
             'count' => $count,
-            'message' => 'Le produit a bien été ajouté au panier'
+            'message' => 'Le produit a bien été ajouté au panier',
         ]);
     }
 

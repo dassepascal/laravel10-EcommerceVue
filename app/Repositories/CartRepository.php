@@ -17,7 +17,7 @@ class CartRepository
                 'image' => $product->image,
                 'quantity' => 1,
                 'attributes' => [],
-                'associatedModel' => $product
+                'associatedModel' => $product,
             ]);
 
         return $this->count();
@@ -69,17 +69,17 @@ class CartRepository
         }
 
         \Cart::session(auth()->user()->id)
-            ->update($rowId, array(
-                'quantity' => - 1
-            ));
+            ->update($rowId, [
+                'quantity' => -1,
+            ]);
     }
 
     public function increaseQuantity(int $rowId): void
     {
         \Cart::session(auth()->user()->id)
-            ->update($rowId, array(
-                'quantity' => + 1
-            ));
+            ->update($rowId, [
+                'quantity' => +1,
+            ]);
     }
 
     public function clear()

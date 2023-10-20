@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Product extends Model
 {
@@ -24,9 +23,8 @@ class Product extends Model
     //     );
     // }
 
-
     public function getFormatedPriceAttribut()
     {
-        return str_replace('.', ',', $this->price/100) . ' €';
+        return str_replace('.', ',', $this->price / 100).' €';
     }
 }

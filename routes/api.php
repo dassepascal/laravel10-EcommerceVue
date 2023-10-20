@@ -22,4 +22,3 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::apiResource('products', CartController::class);
 });
-

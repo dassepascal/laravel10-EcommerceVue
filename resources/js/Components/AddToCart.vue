@@ -18,15 +18,21 @@ import useProduct from '../composables/products/index.js';
 
 const productId = defineProps(['productId']);
 
-const addToCart = async() => {
+const addToCart = async () => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
-        .then(async(res) => {
+        .then(async (res) => {
+            console.log(res)
 
-        console.log(res);
+    // let response =  await axios.post('/api/products', {
+    //             productId: productId,
+
+    //         });
+    //         console.log(response);
         })
+
         .catch((err) => {
             console.log(err);
-         })
-        }
+        })
+}
 </script>
