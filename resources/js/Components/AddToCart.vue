@@ -14,10 +14,10 @@ const productId = defineProps(['productId']);
 const addToCart = async () => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
-        .then(async (res) => {
+        .then(async () => {
             //console.log(res)
-       let response =     await axios.post('/api/products',{
-
+       let response =      axios.post('/api/products',{
+productId: productId.value
             });
             console.log(response)
         })
