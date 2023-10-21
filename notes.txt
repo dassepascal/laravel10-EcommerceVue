@@ -1,4 +1,11 @@
 package
+Pour ceux qui sont sur VScode et ils ont eux cet erreur: undefined type cart.
+La solution est :
+_ installer avec cette commande  : composer require --dev barryvdh/laravel-ide-helper
+_ Après tapez cette commande : php artisan ide-helper:generate
+Et le problème est résolu
+
+
 1 Laravel ProfileGeneratorController
 
 
@@ -96,6 +103,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('products', CartController::class);
 });
 
+bug : AddToCart.vue:27
 
+
+       POST http://127.0.0.1:8000/api/products 500 (Internal Server Error)
 
 

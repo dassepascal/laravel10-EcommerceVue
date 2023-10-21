@@ -1,20 +1,29 @@
+
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Products') }}
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Remove py-8 -->
             <div class="mx-auto container py-8">
+
                 <div class="grid grid-cols-4 gap-4">
+
                     @foreach ($products as $product)
+
                     <!-- Card 1 -->
                     <div tabindex="0" class="focus:outline-none mx-2 w-72">
+
                         <div>
+
                             <img alt="person capturing an image" src="{{ $product->image }}" tabindex="0"
                                 class="focus:outline-none w-full h-44" />
+
                         </div>
                         <div class="bg-white">
                             <div class="flex items-center justify-between px-4 pt-4">
