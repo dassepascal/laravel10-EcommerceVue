@@ -58,6 +58,7 @@ System d'auth
 composer require laravel/breeze
 
 page produit
+probleme affichage du price
 
 install vue
 npm install vue@next vue-loader

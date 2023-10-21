@@ -22,13 +22,16 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::where('id', $request->productId())->firstOrFail();
-        $count = (new CartRepository())->add($product);
 
-        return response()->json([
-            'count' => $count,
-            'message' => 'Le produit a bien été ajouté au panier',
-        ]);
+
+         $product = Product::where('id', $request->productId())->firstOrFail();
+         return $request->productId();
+        // $count = (new CartRepository())->add($product);
+
+        // return response()->json([
+        //     'count' => $count,
+        //     'message' => 'Le produit a bien été ajouté au panier',
+        // ]);
     }
 
     /**

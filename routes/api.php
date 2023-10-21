@@ -19,12 +19,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
-    Route::get('/products', function(Request $request) {
-        return [
-            'products' => $request->user()->cart->products
-        ];
-        
-    });
+    // Route::get('/products', function(Request $request) {
+    //     return [
+    //         'products' => $request->user()->cart->products
+    //     ];
+
+    // });
 
     Route::apiResource('products', CartController::class);
 });
