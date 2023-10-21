@@ -16,7 +16,7 @@ const addToCart = async () => {
     await axios.get('/api/user')
         .then(async () => {
             //console.log(res)
-       let response =      axios.post('/api/products',{
+       let response =axios.post('/api/products',{
 productId: productId.value
             });
             console.log(response)
