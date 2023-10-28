@@ -10,8 +10,13 @@
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
+import Emitter from 'pico-emitter';
+
 const { add } = useProduct();
 const productId = defineProps(['productId']);
+
+const emitter = new Emitter();
+
 
 //dd(productId)
 const addToCart = async () => {
@@ -19,7 +24,10 @@ const addToCart = async () => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
         .then(async () => {
-            await add(productId);
+            // recuperation du cartCount
+           let cartCount = await add(productId);
+           emitter.emit('cartCountUpdated', cartCount);
+         console.log(cartCount)
         })
 
 

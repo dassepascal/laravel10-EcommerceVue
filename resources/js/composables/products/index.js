@@ -4,6 +4,7 @@ export default function useProduct() {
         let response = await axios.post('/api/products', {
             productId: productId
         });
+        console.log(response.data.count)
         return response.data.count;
     }
 

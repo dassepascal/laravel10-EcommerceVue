@@ -19,7 +19,9 @@
         "vue": "^3.2.36"
     },
     "dependencies": {
+        "pico-emitter": "^1.2.1",
         "tiny-emitter": "^2.1.0",
-        "vue-loader": "^15.11.1"
+        "tinyemitter": "^1.0.1",
+        "vue-loader": "^17.3.0"
     }
 }
