@@ -109,4 +109,11 @@ bug : AddToCart.vue:27
 
        POST http://127.0.0.1:8000/api/products 500 (Internal Server Error)
 
+       resolue :  retirer les paranthèse de productId()  $product = Product::where('id', $request->productId())->first();
 
+         $product = Product::where('id', $request->productId)->first();
+
+
+count:https://www.youtube.com/watch?v=qmpbinq8XaY&t=1872s
+
+correction de price automatiser le formatage

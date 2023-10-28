@@ -9,8 +9,7 @@ class CartRepository
 {
     public function add(Product $product): int
     {
-        \Cart::session(auth()->user()->id)
-            ->add([
+        \Cart::session(auth()->user()->id)->add(array(
                 'id' => $product->id,
                 'name' => $product->name,
                 'price' => $product->price,
@@ -18,7 +17,7 @@ class CartRepository
                 'quantity' => 1,
                 'attributes' => [],
                 'associatedModel' => $product,
-            ]);
+        ));
 
         return $this->count();
     }
@@ -53,7 +52,7 @@ class CartRepository
     public function count(): int
     {
         return $this->content()
-            ->sum('quantity');
+            ->sum('quantity');//nombre de produits dans le panier vrai
     }
 
     public function total(): int
