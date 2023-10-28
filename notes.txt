@@ -117,3 +117,8 @@ bug : AddToCart.vue:27
 count:https://www.youtube.com/watch?v=qmpbinq8XaY&t=1872s
 
 correction de price automatiser le formatage
+
+
+parametrage du button panier
+ creation du composant NavbarCart.vue
+ 
