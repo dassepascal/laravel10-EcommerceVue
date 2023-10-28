@@ -19,17 +19,12 @@ const addToCart = async () => {
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
         .then(async () => {
-
             await add(productId);
+        })
 
 
-
-        });
-
-    console.log('response', response)
-})
         .catch ((err) => { console.log(err) });
-}
+};
 
 
 </script>
