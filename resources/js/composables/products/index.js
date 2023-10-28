@@ -7,6 +7,10 @@ export default  function useProduct(){
             console.log(response);
         }
 
+        // methode
+        const getCount = async() => {
+            
+
     return {
         add
     }
