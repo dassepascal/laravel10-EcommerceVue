@@ -19,6 +19,7 @@
         "vue": "^3.2.36"
     },
     "dependencies": {
+        "mitt": "^3.0.1",
         "pico-emitter": "^1.2.1",
         "tiny-emitter": "^2.1.0",
         "tinyemitter": "^1.0.1",

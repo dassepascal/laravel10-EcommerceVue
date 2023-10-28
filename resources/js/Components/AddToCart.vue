@@ -10,12 +10,12 @@
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
-import Emitter from 'pico-emitter';
+import mitt from 'mitt';
 
 const { add } = useProduct();
 const productId = defineProps(['productId']);
 
-const emitter = new Emitter();
+const emitter = mitt();
 
 
 //dd(productId)
@@ -27,7 +27,7 @@ const addToCart = async () => {
             // recuperation du cartCount
            let cartCount = await add(productId);
            emitter.emit('cartCountUpdated', cartCount);
-         console.log(cartCount)
+        // console.log(cartCount)
         })
 
 
