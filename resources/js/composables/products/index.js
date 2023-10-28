@@ -1,17 +1,23 @@
-export default  function useProduct(){
+export default function useProduct() {
 
-    const add = async(productId) => {
+    const add = async (productId) => {
         let response = await axios.post('/api/products', {
             productId: productId
-            });
-            console.log(response);
-        }
+        });
+        console.log(response);
+    }
 
-        // methode
-        const getCount = async() => {
-            
+    // methode
+    const getCount = async () => {
+
+        let response = await axios.get('/api/products/count');
+        console.log(response);
+        return response.data.count;
+    }
 
     return {
-        add
+        add,
+        getCount
     }
 }
+
