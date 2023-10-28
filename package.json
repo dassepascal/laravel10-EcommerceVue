@@ -19,6 +19,7 @@
         "vue": "^3.2.36"
     },
     "dependencies": {
+        "tiny-emitter": "^2.1.0",
         "vue-loader": "^15.11.1"
     }
 }

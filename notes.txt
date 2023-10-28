@@ -121,4 +121,7 @@ correction de price automatiser le formatage
 
 parametrage du button panier
  creation du composant NavbarCart.vue
+
+ installation de tiny-emitter : https://www.npmjs.com/package/tiny-emitter
+
  
