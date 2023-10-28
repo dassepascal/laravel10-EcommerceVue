@@ -10,19 +10,25 @@
 <script setup>
 import axios from 'axios';
 
+
 const productId = defineProps(['productId']);
+
+//dd(productId)
 const addToCart = async () => {
-    //console.log(productId)
-     await axios.get('/sanctum/csrf-cookie');
-     await axios.get('/api/user')
-         .then(async (res) => {
-             console.log(res)
-//        let response =axios.post('/api/products',{
-// productId: productId.value
-//             });
-//             console.log(response)
-         })
-       .catch((err) => { console.log(err) });
+
+    await axios.get('/sanctum/csrf-cookie');
+    await axios.get('/api/user')
+        .then(async () => {
+            //console.log(res)
+
+            let response = await axios.post('api/products', {
+                productId: productId
+
+            });
+
+            console.log('response', response)
+        })
+        .catch((err) => { console.log(err) });
 }
 
 

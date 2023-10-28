@@ -24,8 +24,8 @@ class CartController extends Controller
     {
 
 
-         $product = Product::where('id', $request->productId())->firstOrFail();
-         return $request->productId();
+         $product = Product::where('id', $request->productId)->first();
+         return $product;
         // $count = (new CartRepository())->add($product);
 
         // return response()->json([

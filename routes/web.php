@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::middleware(['auth:sanctum'])->group ( function (){
+    Route::get('/user',function(Request $request){
+        return $request->user();
+    });
+    Route::apiResource('products', CartController::class);
+});
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,3 +39,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
