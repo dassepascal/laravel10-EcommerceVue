@@ -8,9 +8,12 @@ import Alpine from 'alpinejs';
 window.Alpine = Alpine;
 Alpine.start();
 const app = createApp();
+
 app.component('AddToCart', AddToCart);
+
 app.component('NavbarCart',NavbarCart);
+// window.EventBus = new (vue);
 app.mount('#app');
 
-window.EventBus = new (vue);
+
 

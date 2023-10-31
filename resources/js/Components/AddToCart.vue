@@ -14,7 +14,7 @@ import axios from 'axios';
 import useProduct from '@/composables/products';
 import { defineProps } from 'vue';
 import EventBus from '@/EventBus';
-//import ComponentA from '@/components/ComponentA.vue';
+
 
 const { add } = useProduct();
 const productId = defineProps(['productId']);
