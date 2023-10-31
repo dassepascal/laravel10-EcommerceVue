@@ -5,17 +5,21 @@
         <button class="bg-indigo-500 text-white p-2 rounded" v-on:click.prevent="addToCart">Ajouter au panier</button>
 
     </div>
+
+    <ComponentA />
 </template>
 
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
-import Emitter from 'pico-emitter';
+import { defineProps } from 'vue';
+import EventBus from '@/EventBus';
+//import ComponentA from '@/components/ComponentA.vue';
 
 const { add } = useProduct();
 const productId = defineProps(['productId']);
 
-const emitter = new Emitter();
+
 
 
 //dd(productId)
@@ -26,7 +30,7 @@ const addToCart = async () => {
         .then(async () => {
             // recuperation du cartCount
            let cartCount = await add(productId);
-           emitter.emit('cartCountUpdated', cartCount);
+          EventBus.emit('cartCountUpdated', cartCount);
          console.log(cartCount)
         })
 

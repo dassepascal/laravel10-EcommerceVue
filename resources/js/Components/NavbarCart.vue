@@ -16,15 +16,18 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import useProduct from '../composables/products';
-import Emitter from 'pico-emitter';
+import EventBus from '../EventBus';
 
 const { getCount } = useProduct();
-const cartCount = ref(0);
+const cartCount = ref(    0
+);
 
-const emitter = new Emitter();
 
-emitter.on('cartCountUpdated', (count) => {
+
+// emitter on cartCountUpdated
+EventBus.on('cartCountUpdated', (count) => {
     cartCount.value = count;
+    console.log(cartCount.value)
 });
 
 onMounted(async () => {

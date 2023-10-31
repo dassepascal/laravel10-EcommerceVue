@@ -1,5 +1,6 @@
 
 import './bootstrap';
+
 import { createApp } from 'vue';
 import AddToCart from './Components/AddToCart.vue';
 import NavbarCart from './Components/NavbarCart.vue';
@@ -10,3 +11,6 @@ const app = createApp();
 app.component('AddToCart', AddToCart);
 app.component('NavbarCart',NavbarCart);
 app.mount('#app');
+
+window.EventBus = new (vue);
+
