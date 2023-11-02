@@ -18,6 +18,9 @@ const productId = defineProps(['productId']);
 const emitter = mitt();
 
 
+// fire an event
+emitter.emit('foo', { a: 'b' })
+
 //dd(productId)
 const addToCart = async () => {
 
@@ -26,9 +29,13 @@ const addToCart = async () => {
         .then(async () => {
             // recuperation du cartCount
            let cartCount = await add(productId);
-           emitter.emit('cartCountUpdated', cartCount);
-        // console.log(cartCount)
+           console.log('addtocart',cartCount)
+            // mise a jour du cartCount
+          EventBus.emit('cartCountUpdated', cartCount);
+
         })
+
+
 
 
         .catch ((err) => { console.log(err) });
