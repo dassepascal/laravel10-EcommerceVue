@@ -23,9 +23,6 @@ const cartCount = ref(0);
 
 const emitter = mitt();
 
-// listen to an event
-emitter.on('foo', e => console.log('foo', e) )
-console.log('navbar',cartCount.value);
 
 emitter.on('cartCountUpdated', (count) => {
     console.log('cartCountUpdated', count);
@@ -35,7 +32,7 @@ emitter.on('cartCountUpdated', (count) => {
 
 onMounted(async () => {
     cartCount.value = await getCount();
-console.log(cartCount.value)
+    console.log(cartCount.value)
 });
 
 
