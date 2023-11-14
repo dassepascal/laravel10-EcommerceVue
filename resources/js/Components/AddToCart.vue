@@ -18,8 +18,7 @@ const productId = defineProps(['productId']);
 const emitter = mitt();
 
 
-// fire an event
-emitter.emit('foo', { a: 'b' })
+
 
 //dd(productId)
 const addToCart = async () => {
