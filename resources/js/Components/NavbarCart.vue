@@ -21,26 +21,21 @@ import useEventBus from '../eventbus.js';
 
 const { getCount } = useProduct();
 const cartCount = ref(0);
-const {bus} = useEventBus();
+const { bus } = useEventBus();
 
 
 
 onMounted(async () => {
     cartCount.value = await getCount();
-    console.log('mounted',cartCount.value)
+    console.log('mounted', cartCount.value)
 });
 
 
 
-watch(()=>bus.value.get('cartCountUpdated'), (count) => {
-    // my logic here
+watch(() => bus.value.get('cartCountUpdated'), (count) => {
     const [cartCountUpdatedBus] = count;
-    console.log('cartCountUpdatedBus',cartCountUpdatedBus);
-   //cartCountUpdatedBus= new (cartCountUpdatedBus);
     cartCount.value = cartCountUpdatedBus;
-console.log('cartCount.value',cartCount.value);
-    console.log('cartCountUpdated',);
-    });
+});
 
 
 
