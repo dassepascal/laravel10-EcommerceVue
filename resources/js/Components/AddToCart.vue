@@ -10,17 +10,10 @@
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
-import mitt from 'mitt';
-
+import useEventBus from'../eventbus.js';
 const { add } = useProduct();
 const productId = defineProps(['productId']);
-
-const emitter = mitt();
-
-
-
-
-//dd(productId)
+const { emit} = useEventBus();
 const addToCart = async () => {
 
     await axios.get('/sanctum/csrf-cookie');
@@ -30,15 +23,9 @@ const addToCart = async () => {
            let cartCount = await add(productId);
            console.log('addtocart',cartCount)
             // mise a jour du cartCount
-          EventBus.emit('cartCountUpdated', cartCount);
-
+        emit('cartCountUpdated', cartCount);
+            console.log('emit ',cartCount)
         })
-
-
-
-
         .catch ((err) => { console.log(err) });
 };
-
-
 </script>
