@@ -16,7 +16,7 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue';
 import useProduct from '../composables/products';
-import useEventBus from '../eventbus.js';
+import useEventBus from '../eventBus.js';
 
 
 const { getCount } = useProduct();

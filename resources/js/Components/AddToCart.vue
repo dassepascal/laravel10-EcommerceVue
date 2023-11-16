@@ -12,7 +12,7 @@
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
-import useEventBus from '../eventbus.js';
+import useEventBus from '../eventBus.js';
 const { add } = useProduct();
 const productId = defineProps(['productId']);
 const { emit } = useEventBus();
