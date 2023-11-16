@@ -19,8 +19,7 @@ import useProduct from '../composables/products';
 import EventBus from '../EventBus';
 
 const { getCount } = useProduct();
-const cartCount = ref(    0
-);
+const cartCount = ref(0);
 
 
 
