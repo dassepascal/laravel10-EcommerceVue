@@ -20,7 +20,8 @@ const addToCart = async () => {
 
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
-        .then(async () => {
+        .then(async (res) => {
+            console.log('res',res)
             // recuperation du cartCount
             let cartCount = await add(productId);
             emit('cartCountUpdated', cartCount);

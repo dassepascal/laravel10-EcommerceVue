@@ -2,7 +2,7 @@
     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex mr-10">
         <a href="/shoppingCart" class="relative">
             <span
-                class="absolute -top-1 left-4 rounded-full bg-indigo-700 w-5 h-5 text-xs text-white flex items-center justify-center">{{
+                class="absolute -top-1 left-4 rounded-full bg-indigo-700 w-8 h-8 text-xs text-white flex items-center justify-center">{{
                     cartCount }}</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-sm font-medium leading-5 text-gray-600 " fill="none"
                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -31,23 +31,10 @@ onMounted(async () => {
 });
 
 
-console.log('emitter on')
-// emitter.on('cartCountUpdated', (count) => {
-//     console.log('cartCountUpdated', count);
-//     cartCount.value = count;
-//     console.log('cartCountUpdated', cartCount.value)
-// });
-//const emitter = require('tiny-emitter/instance');
 
-// watch(() => myValue.value, (newValue, oldValue) => {
-//       // Your logic here
-//     });
 watch(() => bus.value.get('cartCountUpdated'), (count) => {
-    // my logic here
     const [cartCountUpdatedBus] = count;
-    cartCount.value = count;
-
-    console.log('cartCountUpdated', cartCountUpdatedBus);
+    cartCount.value = cartCountUpdatedBus;
 });
 
 
