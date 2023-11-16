@@ -14,25 +14,45 @@
 
 
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import useProduct from '../composables/products';
-import EventBus from '../EventBus';
+import useEventBus from '../eventbus.js';
+
 
 const { getCount } = useProduct();
 const cartCount = ref(0);
+const { bus } = useEventBus();
 
 
-
-// emitter on cartCountUpdated
-EventBus.on('cartCountUpdated', (count) => {
-    cartCount.value = count;
-    console.log(cartCount.value)
-});
 
 onMounted(async () => {
     cartCount.value = await getCount();
-
+    console.log('mounted', cartCount.value)
 });
 
 
+console.log('emitter on')
+// emitter.on('cartCountUpdated', (count) => {
+//     console.log('cartCountUpdated', count);
+//     cartCount.value = count;
+//     console.log('cartCountUpdated', cartCount.value)
+// });
+//const emitter = require('tiny-emitter/instance');
+
+// watch(() => myValue.value, (newValue, oldValue) => {
+//       // Your logic here
+//     });
+watch(() => bus.value.get('cartCountUpdated'), (count) => {
+    // my logic here
+    const [cartCountUpdatedBus] = count;
+    cartCount.value = count;
+
+    console.log('cartCountUpdated', cartCountUpdatedBus);
+});
+
+
+
+
+
 </script>
+../eventBus.js

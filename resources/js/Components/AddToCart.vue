@@ -12,31 +12,21 @@
 <script setup>
 import axios from 'axios';
 import useProduct from '@/composables/products';
-import { defineProps } from 'vue';
-import EventBus from '@/EventBus';
-
-
+import useEventBus from '../eventbus.js';
 const { add } = useProduct();
 const productId = defineProps(['productId']);
-
-
-
-
-//dd(productId)
+const { emit } = useEventBus();
 const addToCart = async () => {
 
     await axios.get('/sanctum/csrf-cookie');
     await axios.get('/api/user')
         .then(async () => {
             // recuperation du cartCount
-           let cartCount = await add(productId);
-          EventBus.emit('cartCountUpdated', cartCount);
-         console.log(cartCount)
+            let cartCount = await add(productId);
+            emit('cartCountUpdated', cartCount);
+            console.log(cartCount)
         })
-
-
-        .catch ((err) => { console.log(err) });
+        .catch((err) => { console.log(err) });
 };
-
-
 </script>
+../eventBus.js
