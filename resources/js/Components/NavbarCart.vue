@@ -23,6 +23,14 @@ const { getCount } = useProduct();
 const cartCount = ref(0);
 const {bus} = useEventBus();
 
+
+
+onMounted(async () => {
+    cartCount.value = await getCount();
+    console.log('mounted',cartCount.value)
+});
+
+
 console.log('emitter on')
 // emitter.on('cartCountUpdated', (count) => {
 //     console.log('cartCountUpdated', count);
@@ -34,10 +42,10 @@ console.log('emitter on')
 // watch(() => myValue.value, (newValue, oldValue) => {
 //       // Your logic here
 //     });
-watch(()=>bus.value.get('cartCountUpdated'), (cartCount) => {
+watch(()=>bus.value.get('cartCountUpdated'), (count) => {
     // my logic here
-    const [cartCountUpdatedBus] = cartCount;
-    cartCount.value = cartCountUpdatedBus ;
+    const [cartCountUpdatedBus] = count;
+    cartCount.value = count ;
 
     console.log('cartCountUpdated',cartCountUpdatedBus);
     });
@@ -45,8 +53,5 @@ watch(()=>bus.value.get('cartCountUpdated'), (cartCount) => {
 
 
 
-onMounted(async () => {
-    cartCount.value = await getCount();
-    console.log('mounted',cartCount.value)
-});
+
 </script>
