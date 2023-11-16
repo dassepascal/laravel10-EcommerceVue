@@ -31,23 +31,15 @@ onMounted(async () => {
 });
 
 
-console.log('emitter on')
-// emitter.on('cartCountUpdated', (count) => {
-//     console.log('cartCountUpdated', count);
-//     cartCount.value = count;
-//     console.log('cartCountUpdated', cartCount.value)
-// });
-//const emitter = require('tiny-emitter/instance');
 
-// watch(() => myValue.value, (newValue, oldValue) => {
-//       // Your logic here
-//     });
 watch(()=>bus.value.get('cartCountUpdated'), (count) => {
     // my logic here
     const [cartCountUpdatedBus] = count;
-    cartCount.value = count ;
-
-    console.log('cartCountUpdated',cartCountUpdatedBus);
+    console.log('cartCountUpdatedBus',cartCountUpdatedBus);
+   //cartCountUpdatedBus= new (cartCountUpdatedBus);
+    cartCount.value = cartCountUpdatedBus;
+console.log('cartCount.value',cartCount.value);
+    console.log('cartCountUpdated',);
     });
 
 
