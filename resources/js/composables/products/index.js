@@ -3,6 +3,7 @@ import { ref } from 'vue';
 export default function useProduct() {
     //const count = ref(0);
     const products = ref([]);
+    const cartCount = ref(0); // nombre de produits dans le panier
 
     // methode pour recuperer les produits
 
@@ -10,7 +11,9 @@ export default function useProduct() {
 
         let response = await axios.get('/api/products');
 
-       products.value = response.data.cartContent;
+        products.value = response.data.cartContent;
+
+        cartCount.value = response.data.cartCount;
     }
 
     const add = async (productId) => {
@@ -30,7 +33,7 @@ export default function useProduct() {
     }
 
     const increaseQuantity = async (id) => {
-         await axios.get('/api/products/increase/' + id);
+        await axios.get('/api/products/increase/' + id);
     }
 
 
@@ -39,12 +42,12 @@ export default function useProduct() {
 
 
 
-   }
-   const destroyProduct= async(id)=>{
-  
-    await axios.delete('api/products/' + id  );
+    }
+    const destroyProduct = async (id) => {
 
-   }
+        await axios.delete('api/products/' + id);
+
+    }
 
 
     return {
@@ -54,7 +57,8 @@ export default function useProduct() {
         products,
         increaseQuantity,
         decreaseQuantity,
-        destroyProduct
+        destroyProduct,
+        cartCount
 
     }
 }

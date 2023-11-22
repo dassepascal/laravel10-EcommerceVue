@@ -91,14 +91,15 @@
 import { onMounted, computed } from 'vue';
 import useProduct from '../composables/products/index.js';
 import { formatPrice } from '../helpers';
-// import emitter from '../eventbus';
+import useEventBus from '../eventBus.js';
+const { emit } = useEventBus();
 const {
     products,
     getProducts,
     increaseQuantity,
     decreaseQuantity,
     destroyProduct,
-    //     cartCount
+    cartCount
 } = useProduct();//rendu de la fonction useProduct
 
 const cartTotal = computed(() => {
@@ -110,21 +111,21 @@ const cartTotal = computed(() => {
 const increase = async (id) => {
     await increaseQuantity(id);
     await getProducts();
-    //     emitter.emit('cartCountUpdated', cartCount.value)
+emit('cartCountUpdated', cartCount.value)
 }
 
 
 const decrease = async (id) => {
     await decreaseQuantity(id);
     await getProducts();
-
+    emit('cartCountUpdated', cartCount.value)
 }
 
 
 const destroy = async (id) => {
     await destroyProduct(id);
     await getProducts();
-    //     emitter.emit('cartCountUpdated', cartCount.value)
+    emit('cartCountUpdated', cartCount.value)
 }
 
 onMounted(async () => {
