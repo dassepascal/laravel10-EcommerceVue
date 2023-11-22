@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Http\Controllers\StripeCheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::middleware(['auth:sanctum'])->group ( function (){
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/checkout', [StripeCheckoutController::class, 'create']);
+Route::post('/paymentIntent', [StripeCheckoutController::class, 'paymentIntent']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

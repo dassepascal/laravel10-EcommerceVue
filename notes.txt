@@ -137,3 +137,9 @@ creation de la vue
 creation du lien dans NavbarCart
 creation de la route et du controller
 
+
+
+
+stripe
+
+composer require stripe/stripe-php
