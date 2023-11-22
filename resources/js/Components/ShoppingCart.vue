@@ -101,10 +101,10 @@ const {
     //     cartCount
 } = useProduct();//rendu de la fonction useProduct
 
-// const cartTotal = computed(() => {
-//     let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
-//     return formatPrice(price)
-// })
+const cartTotal = computed(() => {
+    let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
+    return formatPrice(price)
+})
 
 
 const increase = async (id) => {
