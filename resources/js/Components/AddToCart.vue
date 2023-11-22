@@ -10,10 +10,12 @@
 </template>
 
 <script setup>
+import { inject } from 'vue';
 import axios from 'axios';
 import useProduct from '@/composables/products';
 import useEventBus from '../eventBus.js';
 const { add } = useProduct();
+const toast = inject('toast');
 const productId = defineProps(['productId']);
 const { emit } = useEventBus();
 const addToCart = async () => {
@@ -25,9 +27,10 @@ const addToCart = async () => {
             // recuperation du cartCount
             let cartCount = await add(productId);
             emit('cartCountUpdated', cartCount);
-            console.log(cartCount)
+            toast.success('Produit ajouté au panier');
         })
-        .catch((err) => { console.log(err) });
+        .catch(() => {
+            toast.error('Merci de vous connecter pour ajouter un produit.') });
 };
 </script>
-../eventBus.js
+

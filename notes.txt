@@ -124,4 +124,16 @@ parametrage du button panier
 
  installation de tiny-emitter : https://www.npmjs.com/package/tiny-emitter
 
- 
+ mise à jour du panier avec watch
+
+systeme de notification avec toast
+https://github.com/MeForma/vue-toaster
+
+npm install @meforma/vue-toaster
+
+creation d'un nouveau composant ShoppingCart.vue
+
+creation de la vue
+creation du lien dans NavbarCart
+creation de la route et du controller
+

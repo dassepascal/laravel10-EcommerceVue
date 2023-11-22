@@ -61,34 +61,48 @@ class CartRepository
             ->getTotal();
     }
 
-    public function decreaseQuantity(int $rowId)
-    {
-        if ($this->getItem($rowId)->quantity === 1) {
-            return $this->delete($rowId);
-        }
 
-        \Cart::session(auth()->user()->id)
-            ->update($rowId, [
-                'quantity' => -1,
-            ]);
-    }
 
-    public function increaseQuantity(int $rowId): void
-    {
-        \Cart::session(auth()->user()->id)
-            ->update($rowId, [
-                'quantity' => +1,
-            ]);
-    }
+
 
     public function clear()
     {
         \Cart::session(auth()->user()->id)->clear();
     }
 
-    private function getItem(int $rowId)
+    // private function getItem(int $id)
+    // {
+    //     return \Cart::session(auth()->user()->id)
+    //         ->get($id);
+    // }
+
+    public function increase($rowId)
     {
-        return \Cart::session(auth()->user()->id)
-            ->get($rowId);
+        \Cart::session(auth()->user()->id)
+        ->update($rowId, [
+            'quantity' => +1,
+        ]);
+    }
+
+    public function decrease(int $id)
+    {
+        $item = \Cart::session(auth()->user()->id)->get($id);
+
+        if ($item->quantity === 1) {
+            $this->remove($id);
+            return ;
+        }
+
+        \Cart::session(auth()->user()->id)
+            ->update($id, array(
+                'quantity' => - 1
+            ));
+    }
+
+
+
+    public function remove($id)
+    {
+        \Cart::session(auth()->user()->id)->remove($id);
     }
 }

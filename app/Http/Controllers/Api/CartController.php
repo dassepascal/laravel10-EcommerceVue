@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Repositories\CartRepository;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailables\Content;
 
 class CartController extends Controller
 {
@@ -14,8 +15,14 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $cartContent = (new CartRepository())->content();
+
+        return response()->json([
+            'cartContent' => $cartContent,
+        ]);
+
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -24,10 +31,10 @@ class CartController extends Controller
     {
 
 
-         $product = Product::where('id', $request->productId)->first();
+        $product = Product::where('id', $request->productId)->first();
 
-         $count = (new CartRepository())->add($product);
-//dd($count);
+        $count = (new CartRepository())->add($product);
+        //dd($count);
         return response()->json([
             'count' => $count,
 
@@ -53,7 +60,7 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $rowId)
     {
         //
     }
@@ -65,9 +72,25 @@ class CartController extends Controller
         return response()->json([
             'count' => $count,
         ]);
+
+    }
+    public function increase(string $id)
+    {
+        $count = (new CartRepository())->increase($id);
+
         return response()->json([
             'count' => $count,
         ]);
+
+    }
+    public function decrease(string $id)
+    {
+        $count = (new CartRepository())->decrease($id);
+
+        return response()->json([
+            'count' => $count,
+        ]);
+
     }
 
 }
