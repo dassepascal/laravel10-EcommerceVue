@@ -88,18 +88,18 @@
 </template>
 
 <script setup >
- import { onMounted, computed } from 'vue';
- import useProduct from '../composables/products/index.js';
- import { formatPrice } from '../helpers';
+import { onMounted, computed } from 'vue';
+import useProduct from '../composables/products/index.js';
+import { formatPrice } from '../helpers';
 // import emitter from '../eventbus';
- const {
-     products,
-     getProducts,
-     increaseQuantity,
-     decreaseQuantity,
-     deleteProduct,
-//     cartCount
- } = useProduct();//rendu de la fonction useProduct
+const {
+    products,
+    getProducts,
+    increaseQuantity,
+    decreaseQuantity,
+    destroyProduct,
+    //     cartCount
+} = useProduct();//rendu de la fonction useProduct
 
 // const cartTotal = computed(() => {
 //     let price = Object.values(products.value).reduce((acc, product) => acc += product.price * product.quantity, 0);
@@ -107,33 +107,29 @@
 // })
 
 
- const increase = async (id) => {
-     await increaseQuantity(id);
-     await getProducts();
-//     emitter.emit('cartCountUpdated', cartCount.value)
- }
+const increase = async (id) => {
+    await increaseQuantity(id);
+    await getProducts();
+    //     emitter.emit('cartCountUpdated', cartCount.value)
+}
 
 
- const decrease = async (id) => {
-
-     await decreaseQuantity(id);
-     await getProducts();
-
- }
- console.log('decrease', decrease);
-
- const destroy = async (id) => {
-     await deleteProduct(id);
-     await getProducts();
-//     emitter.emit('cartCountUpdated', cartCount.value)
- }
-
- onMounted(async () => {
-//     //   const products = await getProducts()
-
+const decrease = async (id) => {
+    await decreaseQuantity(id);
     await getProducts();
 
- })
+}
+
+
+const destroy = async (id) => {
+    await destroyProduct(id);
+    await getProducts();
+    //     emitter.emit('cartCountUpdated', cartCount.value)
+}
+
+onMounted(async () => {
+    await getProducts();
+})
 
 
 </script>

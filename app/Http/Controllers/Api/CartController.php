@@ -92,5 +92,10 @@ class CartController extends Controller
         ]);
 
     }
+    public function destroy($id)
+    {
+        (new CartRepository())->remove($id);
+
+    }
 
 }

@@ -3,11 +3,10 @@ import { ref } from 'vue';
 export default function useProduct() {
     //const count = ref(0);
     const products = ref([]);
-    console.log('products', products);
 
     // methode pour recuperer les produits
 
-    const getProducts = async (res) => {
+    const getProducts = async () => {
 
         let response = await axios.get('/api/products');
 
@@ -34,14 +33,19 @@ export default function useProduct() {
          await axios.get('/api/products/increase/' + id);
     }
 
+
     const decreaseQuantity = async (id) => {
         await axios.get('/api/products/decrease/' + id);
 
 
+
    }
-//    const destroyProduct= (id)=>{
-//     await axios.delete('/api/products/' + $id  );
-//    }
+   const destroyProduct= async(id)=>{
+  
+    await axios.delete('api/products/' + id  );
+
+   }
+
 
     return {
         add,
@@ -49,7 +53,8 @@ export default function useProduct() {
         getProducts,
         products,
         increaseQuantity,
-        decreaseQuantity
+        decreaseQuantity,
+        destroyProduct
 
     }
 }
