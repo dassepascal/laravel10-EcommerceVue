@@ -143,3 +143,30 @@ creation de la route et du controller
 stripe
 
 composer require stripe/stripe-php
+
+https://stripe.com/docs/payments/quickstart
+
+dans le systeme stripe il utilise fetch on adapte pour axios 
+
+// Fetches a payment intent and captures the client secret
+
+async function initialize() {
+  const response = await fetch("/create-payment-intent", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items }),
+  });
+  const { clientSecret } = await response.json();
+
+  const appearance = {
+    theme: 'stripe',
+  };
+  elements = stripe.elements({ appearance, clientSecret });
+
+  const paymentElementOptions = {
+    layout: "tabs",
+  };
+
+  const paymentElement = elements.create("payment", paymentElementOptions);
+  paymentElement.mount("#payment-element");
+}
