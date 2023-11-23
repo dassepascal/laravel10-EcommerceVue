@@ -62,7 +62,7 @@ class CartRepository
     }
 
 
-
+// creation de la methode clear
 
 
     public function clear()

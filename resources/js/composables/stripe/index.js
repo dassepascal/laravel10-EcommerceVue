@@ -1,5 +1,6 @@
-import { ref } from "vue";
 
+import { saveOrder } from "@/helpers";
+import { ref } from "vue";
 export default function useStripe() {
 
     const elements = ref(null);
@@ -58,7 +59,7 @@ export default function useStripe() {
         switch (paymentIntent.status) {
             case "succeeded":
                 showMessage("Payment succeeded!");
-                //await registerOrder();
+                await saveOrder();
                 window.location = '/merci';
                 break;
             case "processing":

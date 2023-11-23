@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\StripeCheckoutController;
 
@@ -33,6 +34,8 @@ Route::get('merci', fn ()=>'merci pour votre commande');
 
 Route::get('/checkout', [StripeCheckoutController::class, 'create']);
 Route::post('/paymentIntent', [StripeCheckoutController::class, 'paymentIntent']);
+
+Route::post('/saveOrder', OrderController::class)->name('orders.save');
 
 
 Route::get('/dashboard', function () {
