@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+
 import { onMounted } from 'vue';
 import  useStripe  from '../composables/stripe/index.js';
 
