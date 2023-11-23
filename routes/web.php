@@ -29,6 +29,7 @@ Route::middleware(['auth:sanctum'])->group ( function (){
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('merci', fn ()=>'merci pour votre commande');
 
 Route::get('/checkout', [StripeCheckoutController::class, 'create']);
 Route::post('/paymentIntent', [StripeCheckoutController::class, 'paymentIntent']);

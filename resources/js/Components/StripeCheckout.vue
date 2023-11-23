@@ -4,9 +4,12 @@
 <form >
     <h1 id="payment-form" ></h1>
   <div id="payment-element">
-    <!--Stripe.js injects the Payment Element-->
+    <!--Stripe/index.js injects the Payment Element-->
   </div>
-  <button id="submit">
+  <button
+   id="submit"
+   v-on:click.prevent="handleSumit"
+   >
     <div class="spinner hidden" id="spinner"></div>
     <span id="button-text">Pay now</span>
   </button>
@@ -23,6 +26,7 @@ import  useStripe  from '../composables/stripe/index.js';
 const {
      initialise,
      checkStatus,
+     handleSumit,
 
     } = useStripe();
 
