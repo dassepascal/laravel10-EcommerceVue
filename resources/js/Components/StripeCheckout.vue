@@ -20,11 +20,16 @@
 import { onMounted } from 'vue';
 import  useStripe  from '../composables/stripe/index.js';
 
-const { initialise} = useStripe();
+const {
+     initialise,
+     checkStatus,
+
+    } = useStripe();
 
 
 onMounted(async() => {
     await initialise();
+    await checkStatus();
 })
 
 </script>
