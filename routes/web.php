@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/shoppingCart',ShoppingCartController::class)->name('cart.index');
+Route::get('/shoppingCart',ShoppingCartController::class)->name('shopping.index');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 

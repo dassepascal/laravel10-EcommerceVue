@@ -9,7 +9,7 @@ export default function useProduct() {
 
     const getProducts = async () => {
 
-        let response = await axios.get('/api/products');
+        let response = await axios.get('/api/cart');
 
         products.value = response.data.cartContent;
 
@@ -17,7 +17,7 @@ export default function useProduct() {
     }
 
     const add = async (productId) => {
-        let response = await axios.post('/api/products', {
+        let response = await axios.post('/api/cart', {
             productId: productId
         });
 
@@ -27,25 +27,25 @@ export default function useProduct() {
     // methode
     const getCount = async () => {
 
-        let response = await axios.get('/api/products/count');
+        let response = await axios.get('/api/cart/count');
 
         return response.data.count;
     }
 
     const increaseQuantity = async (id) => {
-        await axios.get('/api/products/increase/' + id);
+        await axios.get('/api/cart/increase/' + id);
     }
 
 
     const decreaseQuantity = async (id) => {
-        await axios.get('/api/products/decrease/' + id);
+        await axios.get('/api/cart/decrease/' + id);
 
 
 
     }
     const destroyProduct = async (id) => {
 
-        await axios.delete('api/products/' + id);
+        await axios.delete('api/cart/' + id);
 
     }
 

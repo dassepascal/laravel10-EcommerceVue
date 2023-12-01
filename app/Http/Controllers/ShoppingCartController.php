@@ -8,6 +8,6 @@ class ShoppingCartController extends Controller
 {
     public function __invoke()
     {
-            return view('cart.index');
+            return view('shopping.index');
     }
 }
